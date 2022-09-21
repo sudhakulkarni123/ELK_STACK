@@ -1,0 +1,6 @@
+vpc_name     = "elk_vpc"
+vpc_cidr     = "192.168.0.0/16"
+cidr_public  = "192.168.1.0/24" 
+cidr_private_a = "192.168.2.0/24" 
+cidr_private_b = "192.168.3.0/24"
+cidr_private_c = "192.168.4.0/24" 
