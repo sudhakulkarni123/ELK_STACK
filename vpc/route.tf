@@ -1,9 +1,9 @@
 resource "aws_route_table" "internet_route_tbl" {
-  vpc_id = aws_vpc.elk_vpc.id
+  vpc_id = aws_vpc.elk_vpc1.id
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.internet_gateway.id
+    gateway_id = aws_internet_gateway.internet_gateways.id
   }
 
   tags = {
@@ -12,7 +12,7 @@ resource "aws_route_table" "internet_route_tbl" {
 }
 
 resource "aws_route_table" "nat_route_tbl" {
-  vpc_id = aws_vpc.elk_vpc.id
+  vpc_id = aws_vpc.elk_vpc1.id
 
   route {
     cidr_block = "0.0.0.0/0"
