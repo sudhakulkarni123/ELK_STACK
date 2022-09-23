@@ -1,9 +1,9 @@
 [bastion]
-52.17.229.1
+34.242.175.167 
 
 [bastion:vars]
 ansible_user=ubuntu
-ansible_ssh_private_key_file=~/.ssh/ec2key.pem
+ansible_ssh_private_key_file=~/.ssh/talent_acedamy_lab.pem 
 
 [elkservers:children]
 elastic
@@ -14,23 +14,23 @@ demoservers
 [elkservers:vars]
 ansible_connection=ssh
 ansible_user=ubuntu
-ansible_ssh_private_key_file=~/.ssh/ec2key.pem
+ansible_ssh_private_key_file=~/.ssh/talent_acedamy_lab.pem 
 ansible_port=22
-ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q ubuntu@52.17.229.1"'
+ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q ubuntu@34.242.175.167"'
 
 [elastic]
-13.13.4.248
+192.168.2.131
 
 [kibana]
-13.13.1.10
+54.78.253.38
 
 [logstash]
-13.13.4.240
+192.168.2.203
 
 [demoservers]
-13.13.7.64
-13.13.8.180
-13.13.9.19
+192.168.2.222
+192.168.3.236
+192.168.4.87
 
 
 

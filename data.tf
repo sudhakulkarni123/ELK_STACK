@@ -9,62 +9,30 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-data "aws_ami" "elasticsearch_ubuntu1" {
-  most_recent = true
-  owners      = ["312415305792"]
-
+data "aws_ami" "ubuntu_ami" {
   filter {
-    name   = "name"
-    values = ["elasticsearch_server1"]
+    name = "tag:Name"
+    values = ["kibana_ami"]
   }
 }
 
-data "aws_ami" "kibana_ubuntu1" {
-  most_recent = true
-  owners      = ["312415305792"]
 
-  filter {
-    name   = "name"
-    values = ["kibana_server1"]
-  }
-}
-
-data "aws_ami" "logstach_ubuntu1" {
-  most_recent = true
-  owners      = ["312415305792"]
-
-  filter {
-    name   = "name"
-    values = ["logstach_server1"]
-  }
-}
-
-data "aws_ami" "filebeat_ubuntu1" {
-  most_recent = true
-  owners      = ["312415305792"]
-
-  filter {
-    name   = "name"
-    values = ["filebeat_server1"]
-  }
-}
-
-data "aws_vpc" "elk_vpc" {
+data "aws_vpc" "elk_vpc1" {
     filter {
       name = "tag:Name"
-      values =["elk_vpc"]
+      values =["elk_vpc1"]
     }
 }
 
-resource "aws_internet_gateway" "internet_gateway" {
-  #vpc_id = aws_vpc.elk_vpc.id
+resource "aws_internet_gateway" "internet_gateways" {
+  #vpc_id = aws_vpc.elk_vpc1.id
 
   tags = {
-    Name = "internet_gateway"
+    Name = "internet_gateways"
   }
 }
 
-resource "aws_eip" "nat_eip" {
+resource "aws_eip" "eip" {
   vpc = true
 }
  

@@ -1,5 +1,5 @@
 resource "aws_instance" "elasticsearch_server" {
-  ami           = data.aws_ami.elasticsearch_ubuntu1.id
+  ami           = data.aws_ami.ubuntu_ami.id
   instance_type = "m4.large"
   #security group
   vpc_security_group_ids = [aws_security_group.elasticseach_sg.id]
@@ -9,15 +9,10 @@ resource "aws_instance" "elasticsearch_server" {
     Name = "elasticsearch_server"
   }
 }
-#resource "aws_eip" "elasticsearch_server_ip" {
-#  instance = aws_instance.elasticsearch_server.id
-#  vpc      = true
-#}
-
 
 
 resource "aws_instance" "logstach_server" {
-  ami           = data.aws_ami.logstach_ubuntu1.id
+  ami           = data.aws_ami.ubuntu_ami.id
   instance_type = "m4.large"
   #security group
   vpc_security_group_ids = [aws_security_group.logstach_sg.id]
@@ -27,15 +22,10 @@ resource "aws_instance" "logstach_server" {
     Name = "logstach-server"
   }
 }
-#resource "aws_eip" "logstach_server_ip" {
-#  instance = aws_instance.logstach_server.id
-#  vpc      = true
-#}
-
 
 
 resource "aws_instance" "kibana_server" {
-  ami           = data.aws_ami.kibana_ubuntu1.id
+  ami           = data.aws_ami.ubuntu_ami.id
   instance_type = "m4.large"
   #security group
   vpc_security_group_ids = [aws_security_group.kibana_sg.id]
@@ -52,7 +42,7 @@ resource "aws_eip" "kibana_server_ip" {
 
 
 resource "aws_instance" "demo1_server" {
-  ami           = data.aws_ami.filebeat_ubuntu1.id
+  ami           = data.aws_ami.ubuntu_ami.id
   instance_type = "t3.medium"
   #security group
   vpc_security_group_ids = [aws_security_group.demo_sg.id]
@@ -69,7 +59,7 @@ resource "aws_instance" "demo1_server" {
 
 
 resource "aws_instance" "demo2_server" {
-  ami           = data.aws_ami.filebeat_ubuntu1.id
+  ami           = data.aws_ami.ubuntu_ami.id
   instance_type = "t3.medium"
   #security group
   vpc_security_group_ids = [aws_security_group.demo_sg.id]
@@ -79,14 +69,10 @@ resource "aws_instance" "demo2_server" {
     Name = "demo2-server"
   }
 }
-#resource "aws_eip" "demo2_server_ip" {
-#  instance = aws_instance.demo2_server.id
- # vpc      = true
-#}
 
 
 resource "aws_instance" "demo3_server" {
-  ami           = data.aws_ami.filebeat_ubuntu1.id
+  ami           = data.aws_ami.ubuntu_ami.id
   instance_type = "t3.medium"
   #security group
   vpc_security_group_ids = [aws_security_group.demo_sg.id]
@@ -96,11 +82,6 @@ resource "aws_instance" "demo3_server" {
     Name = "demo3-server"
   }
 }
-#resource "aws_eip" "demo3_server_ip" {
- # instance = aws_instance.demo3_server.id
- # vpc      = true
-#}
-
 
 resource "aws_instance" "bastion_host_ami" {
   ami           = data.aws_ami.ubuntu.id

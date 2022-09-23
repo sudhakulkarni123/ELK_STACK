@@ -1,7 +1,7 @@
 resource "aws_security_group" "elasticseach_sg" {
   name        = "elasticseach_server"
   description = "Allow connection for ansible inbound traffic"
-  vpc_id      = data.aws_vpc.elk_vpc.id
+  vpc_id      = data.aws_vpc.elk_vpc1.id
 
   ingress {
     description      = "Allow port 9200"
@@ -17,7 +17,7 @@ resource "aws_security_group" "elasticseach_sg" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["192.168.0.0/16"]
+    cidr_blocks      = ["0.0.0.0/0"]
   
   }
 
@@ -46,7 +46,7 @@ resource "aws_security_group" "elasticseach_sg" {
 resource "aws_security_group" "kibana_sg" {
   name        = "kibana-server"
   description = "Allow connection for ansible inbound traffic"
-  vpc_id      = data.aws_vpc.elk_vpc.id
+  vpc_id      = data.aws_vpc.elk_vpc1.id
 
   ingress {
     description      = "Allow port 5601"
@@ -62,7 +62,7 @@ resource "aws_security_group" "kibana_sg" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["192.168.0.0/16"]
+    cidr_blocks      = ["0.0.0.0/0"]
   
   }
 
@@ -91,7 +91,7 @@ resource "aws_security_group" "kibana_sg" {
 resource "aws_security_group" "logstach_sg" {
   name        = "logstach-server"
   description = "Allow connection for ansible inbound traffic"
-  vpc_id      = data.aws_vpc.elk_vpc.id
+  vpc_id      = data.aws_vpc.elk_vpc1.id
 
   ingress {
     description      = "Allow port 5044"
@@ -107,7 +107,7 @@ resource "aws_security_group" "logstach_sg" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["192.168.0.0/16"]
+    cidr_blocks      = ["0.0.0.0/0"]
   
   }
 
@@ -136,7 +136,7 @@ resource "aws_security_group" "logstach_sg" {
 resource "aws_security_group" "demo_sg" {
   name        = "demo1-server"
   description = "Allow connection for ansible inbound traffic"
-  vpc_id      = data.aws_vpc.elk_vpc.id
+  vpc_id      = data.aws_vpc.elk_vpc1.id
 
   ingress {
     description      = "Allow port 80"
@@ -152,7 +152,7 @@ resource "aws_security_group" "demo_sg" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["192.168.0.0/16"]
+    cidr_blocks      = ["0.0.0.0/0"]
   
   }
 
@@ -182,7 +182,7 @@ resource "aws_security_group" "demo_sg" {
 resource "aws_security_group" "bastion_host_server_sg" {
   name        = "bastion-host-server"
   description = "Allow connection for bastion host server."
-  vpc_id      = data.aws_vpc.elk_vpc.id
+  vpc_id      = data.aws_vpc.elk_vpc1.id
   ingress {
     description = "Allow port 22"
     from_port   = 22
